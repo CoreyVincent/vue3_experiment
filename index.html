@@ -6,13 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue Tests</title>
   <script src="https://unpkg.com/vue@3.0.5"></script>
+  <script type="module" src="./src/main.js"></script>
 </head>
 <body>
   
   <div id="app">
-    <h1>{{ title }}</h1>
-  </div>
+    <button @click="toggleShow">
+      <span v-if="showThis">Hide</span>
+      <span v-else>Show</span>
+    </button>
 
-  <script src="app.js"></script>
+    <div v-if="showThis">
+      <p>{{ value || "No Value"}}</p>
+      <p>{{ nothing || "This will show, if there is no value."}}</p>
+    </div>
+    <div v-show="showThis">
+      <p>v-show adds style tag, doesn't remove from dom</p>
+    </div>
+  </div>
+  <a href="https://www.youtube.com/watch?v=CYPZBK8zUik" target="_blank">Tuts</a>
+
 </body>
 </html>
