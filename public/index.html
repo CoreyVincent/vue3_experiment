@@ -11,7 +11,10 @@
 </head>
 
 <body>
-
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <!-- built files will be auto injected -->
     <div id="app">
         <button @click="toggleShow">
           <span v-if="showThis">Hide</span>
@@ -47,8 +50,8 @@
         <!-- Binding -->
         <h3>Binding</h3>
         <div>
-          <a v-bind:href="url">Bound Link</a>
-          <a :href="url">Bound Link</a>
+          <a v-bind:href="url">Bound Link (using 'v-bind:')</a>
+          <a :href="url">Bound Link (shortcut using ':')</a>
         </div>
 
         <!-- Dynamic classes -->
