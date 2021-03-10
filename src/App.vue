@@ -24,8 +24,14 @@
     <!-- v-for loops -->
     <div class="content">
       <p class="title">v-for</p>
+      <p>Double Click to change the "isFavorite" property</p>
       <ul class="list">
-        <li v-for="item in myArray" :key="item.message">{{ item.title }} - {{ item.body }}</li>
+        <li
+          v-for="item in myArray"
+          :class="{ fav: item.isFavorite }"
+          :key="item.message"
+          @dblclick="toggleFavorite(item)"
+        >{{ item.title }} - {{ item.body }}</li>
       </ul>
     </div>
 
@@ -77,22 +83,28 @@ export default {
           title: "Meditation",
           body:
             "Letterpress seitan chicharrones tumeric food truck crucifix fingerstache asymmetrical paleo chartreuse williamsburg before they sold out.",
+          isFavorite: true,
         },
         {
           title: "Microdosing ",
           body:
             "Selvage truffaut distillery gentrify messenger bag swag austin kogi synth palo santo shoreditch narwhal brooklyn seitan.",
+          isFavorite: false,
         },
         {
           title: "Helvetica ",
           body:
             "Jianbing banjo thundercats iPhone craft beer selvage drinking vinegar. ",
+          isFavorite: false,
         },
       ],
-      url: "https://duckduckgo.com",
+      url: "https://www.youtube.com/watch?v=CYPZBK8zUik",
     };
   },
   methods: {
+    toggleFavorite(item) {
+      item.isFavorite = !item.isFavorite;
+    },
     toggleShow() {
       this.showThis = !this.showThis;
     },
@@ -121,5 +133,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+li {
+  list-style-type: none;
+}
+li.fav {
+  background: #5ceebd;
 }
 </style>
