@@ -27,7 +27,7 @@
       <p>Double Click to change the "isFavorite" property</p>
       <ul class="list">
         <li
-          v-for="item in myArray"
+          v-for="item in filteredList"
           :class="{ fav: item.isFavorite }"
           :key="item.message"
           @dblclick="toggleFavorite(item)"
@@ -89,13 +89,13 @@ export default {
           title: "Microdosing ",
           body:
             "Selvage truffaut distillery gentrify messenger bag swag austin kogi synth palo santo shoreditch narwhal brooklyn seitan.",
-          isFavorite: false,
+          isFavorite: true,
         },
         {
           title: "Helvetica ",
           body:
             "Jianbing banjo thundercats iPhone craft beer selvage drinking vinegar. ",
-          isFavorite: false,
+          isFavorite: true,
         },
       ],
       url: "https://www.youtube.com/watch?v=CYPZBK8zUik",
@@ -120,6 +120,11 @@ export default {
     mouseMoveHndl(event) {
       this.mouseX = event.x;
       this.mouseY = event.y;
+    },
+  },
+  computed: {
+    filteredList() {
+      return this.myArray.filter((arrayItem) => arrayItem.isFavorite);
     },
   },
 };
